@@ -63,6 +63,62 @@ class MainActivity : AppCompatActivity() {
                     "Curious George",
                     "Award winning investigator",
                     "https://cdn2.thecatapi.com/images/bar.jpg"
+                ),
+                // Item tambahan 1
+                CatModel(
+                    Gender.Female,
+                    CatBreed.AmericanCurl,
+                    "Luna",
+                    "Playful explorer",
+                    "https://cdn2.thecatapi.com/images/1if.jpg"
+                ),
+                // Item tambahan 2
+                CatModel(
+                    Gender.Male,
+                    CatBreed.ExoticShorthair,
+                    "Max",
+                    "Lazy lounger",
+                    "https://cdn2.thecatapi.com/images/3do.jpg"
+                ),
+                // Item tambahan 3
+                CatModel(
+                    Gender.Unknown,
+                    CatBreed.BalineseJavanese,
+                    "Bella",
+                    "Mysterious wanderer",
+                    "https://cdn2.thecatapi.com/images/5iY.jpg"
+                ),
+                // Item tambahan 4
+                CatModel(
+                    Gender.Male,
+                    CatBreed.AmericanCurl,
+                    "Oliver",
+                    "Adventurous hunter",
+                    "https://cdn2.thecatapi.com/images/a3h.jpg"
+                ),
+                // Item tambahan 5
+                CatModel(
+                    Gender.Female,
+                    CatBreed.ExoticShorthair,
+                    "Sophie",
+                    "Affectionate companion",
+                    "https://cdn2.thecatapi.com/images/ai6.jpg"
+                ),
+                // Item tambahan 6
+                CatModel(
+                    Gender.Unknown,
+                    CatBreed.BalineseJavanese,
+                    "Charlie",
+                    "Curious observer",
+                    "https://cdn2.thecatapi.com/images/eh5.jpg"
+                ),
+                // Item tambahan 7
+                CatModel(
+                    Gender.Female,
+                    CatBreed.AmericanCurl,
+                    "Mia",
+                    "Gentle soul",
+                    "https://cdn2.thecatapi.com/images/RIyBElNT7.jpg"
                 )
             )
         )
