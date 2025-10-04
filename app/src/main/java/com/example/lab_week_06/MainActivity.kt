@@ -6,39 +6,41 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlin.getValue
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.lab_week_06.model.CatBreed
 import com.example.lab_week_06.model.CatModel
 import com.example.lab_week_06.model.Gender
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     private val recyclerView: RecyclerView by lazy {
         findViewById(R.id.recycler_view)
     }
     private val catAdapter by lazy {
-        // Glide is used here to load the images
-        // Here we are passing the onClickListener function to the Adapter
         CatAdapter(layoutInflater, GlideImageLoader(this), object : CatItemClickListener {
-            // When this is triggered, the pop up dialog will be shown
             override fun onItemClick(cat: CatModel) = showSelectionDialog(cat)
         })
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         recyclerView.adapter = catAdapter
-
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+        // Instantiate ItemTouchHelper for the swipe to delete callback and attach it to the recycler view
+        val itemTouchHelper = ItemTouchHelper(catAdapter.swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         catAdapter.setData(
             listOf(
                 CatModel(
@@ -65,13 +67,11 @@ class MainActivity : AppCompatActivity() {
             )
         )
     }
+
     private fun showSelectionDialog(cat: CatModel) {
         AlertDialog.Builder(this)
-            //Set the title for the dialog
             .setTitle("Cat Selected")
-            //Set the message for the dialog
             .setMessage("You have selected cat ${cat.name}")
-            //Set if the OK button should be enabled
             .setPositiveButton("OK") { _, _ -> }.show()
     }
 }
